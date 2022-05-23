@@ -1,4 +1,4 @@
-**Configure nginx**
+### Configure nginx
 ```bash
 vi /etc/nginx/sites-available/api.fourtimes.ml
 
