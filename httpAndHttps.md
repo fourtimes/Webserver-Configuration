@@ -139,6 +139,20 @@ cd demo
 ```bash 
 vim index.html
 ```
+18. Create index.html file and put the information:
+
+```bash
+vim /var/www/fourtimes.ml/demo/index.html
+
+add this content:
+-----------------
+<html>
+<body>
+<div style="width: 100%; font-size: 40px; font-weight: bold; text-apiign: center;">
+welcome to the demo path routing
+</div>
+</body>
+</html>
 **Output**
 
 ![image](https://user-images.githubusercontent.com/91359308/169807444-35b6d132-fa80-4201-9d9e-8198c9cc882f.png)
