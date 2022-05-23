@@ -6,6 +6,8 @@
 ```bash
 ls
 ```
+![image](https://user-images.githubusercontent.com/91359308/169757062-996321bf-1e8c-44c2-8696-5a68d3baec41.png)
+
 
 4. Merge the certificate
 ```bash
