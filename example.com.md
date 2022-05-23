@@ -27,41 +27,38 @@ vim /etc/nginx/ssl-certificate/private.key
 6. configure the https,http domains and redirect conditions
 
 ```bash
-vi /etc/nginx/sites-available/fourtimes.ml
+vi /etc/nginx/sites-available/example.org
 
 add this content:
 -----------------
-server {
-    listen       80;
-    server_name  fourtimes.ml www.fourtimes.ml;
-    return 301 https://$host$request_uri;
-
-    location / {
-        root   /var/www/fourtimes.ml;
-        index  index.html index.htm;
-    }
-}
 
 server {
-    listen                443 ssl;
-    ssl                  on;
+    listen		443	ssl    default_server;
+	server_name	example.org;
+
+
     ssl_certificate      /etc/nginx/ssl-certificate/certificate.crt;
     ssl_certificate_key  /etc/nginx/ssl-certificate/private.key;
-    server_name  fourtimes.ml;
-    access_log   /var/log/nginx/fourtimes.ml.access.log;
-    error_log    /var/log/nginx/fourtimes.ml.error.log;
 
-    location     / {
-        root         /var/www/fourtimes.ml;
-        index        index.html index.htm;
-    }
+
+
+ssl_trusted_certificate		/opt/keys/example.org/example.org.unified+root.crt;
+# Include global SSL settings
+	include /etc/nginx/ssl.conf;
+
+	root   /usr/share/nginx/html;
+	index  index.html index.htm;
+
+   location / {
+		proxy_pass  http://upstream;
+	}
 }
 ```
 
 7. Create directory file
 
 ```bash
-mkdir /var/www/fourtimes.ml
+mkdir /usr/share/nginx/html
 ```
 
 8. Change the directory
@@ -73,7 +70,7 @@ cd /etc/nginx/sites-enabled
 9. copy the file sites-enabled from site-available
 
 ```bash
-ln -s /etc/nginx/sites-available/fourtimes.ml ./
+ln -s /etc/nginx/sites-available/example.org ./
 ```
 
 10. restart the server
@@ -91,7 +88,7 @@ systemctl status nginx
 12. Create index.html file and put the information:
 
 ```bash
-vim /var/www/fourtimes.ml/index.html
+vim /usr/share/nginx/html/index.html
 
 add this content:
 -----------------
@@ -107,31 +104,5 @@ welcome to the fourtimes.ml domain
 13. To run inside the terminapi
 
 ```bash
-curl api.fourtimes.ml
+curl example.org
 ```
-
-14. ## path routing
-    Go to the document root
-
-```bash
-/var/www/fourtimes.ml/
-```
-
-15. Create new directory
-
-```bash
-mkdir demo
-```
-
-16. Change directory
-
-```bash
-cd demo
-```
-17. create index.html file
-
-```bash 
-vim index.html
-```
-
-18.
