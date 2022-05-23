@@ -1,4 +1,4 @@
-### Configure nginx
+### Configure nginx http to https
 
 1. Download the ssl certificate and Extract that.
 2. go to the exact path and open in terminal.
@@ -14,14 +14,20 @@ ls
 
 ```bash
 cat certificate.crt ca_bundle.crt >> certificate.crt
+
+# copy the certificate, paste into  /etc/nginx/ssl-certificate/certificate.crt
+cat certificate.crt
+
+# copy the certificate, paste into  /etc/nginx/ssl-certificate/private.key
+cat private.key
 ```
 
 5. To store the value in nginx
 
 ```bash
 mkdir /etc/nginx/ssl-certificate
-vim /etc/nginx/ssl-certificate/certificate.crt
-vim /etc/nginx/ssl-certificate/private.key
+sudo vim /etc/nginx/ssl-certificate/certificate.crt
+sudo vim /etc/nginx/ssl-certificate/private.key
 ```
 
 6. configure the https,http domains and redirect conditions
@@ -107,8 +113,8 @@ welcome to the fourtimes.ml domain
 ```
 
 
-13. To run inside the terminapi
+13. To run inside the terminal
 
 ```bash
-curl api.fourtimes.ml
+curl https://fourtimes.ml
 ```
