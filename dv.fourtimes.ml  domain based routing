@@ -1,0 +1,32 @@
+create file  in /etc/nginx/sites-enabled/dv.fourtimes.ml
+
+vim dv.fourtimes.ml
+add this content
+
+server {
+        listen 80;
+        server_name dv.fourtimes.ml;
+        access_log /var/log/nginx/dv.fourtimes.ml.access.log
+        error_log  /var/log/nginx/dv.fourtimes.ml.error.log
+        
+        location/{
+        root /var/www/dv.fourtimes.ml
+        index index.html index.htm
+        }
+        }
+        save and exit
+  create directory mkdir -p /var/www/dv.fourtimes.ml
+  create index.html in /dv.fourtimes.ml
+  
+  Edit the file vim /etc/host
+  
+  add your ip  and your domain
+  192.168.0.103  dv.fourtimes.ml
+  
+  check nginx -t
+  systemctl restart nginx
+  
+  
+   check in terminal curl dv.fourtimes.ml
+   
+  check log file cd /var/log/nginx/dv.fourtimes.ml.access.log
