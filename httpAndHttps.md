@@ -154,7 +154,5 @@ welcome to the demo path routing
 
 ![image](https://user-images.githubusercontent.com/91359308/169807444-35b6d132-fa80-4201-9d9e-8198c9cc882f.png)
 
-![image](https://user-images.githubusercontent.com/91359308/169807869-2744fa2d-ad71-44ed-a363-b6bf57af0f8d.png)
-
 ![image](https://user-images.githubusercontent.com/91359308/169808713-4dc0d8d5-9c53-44a3-8602-9f942ecef8fa.png)
 
