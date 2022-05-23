@@ -1,4 +1,4 @@
-### Configure nginx http to https
+### Configure nginx - http to https
 
 1. Download the ssl certificate and Extract that.
 2. go to the exact path and open in terminal.
@@ -139,5 +139,9 @@ cd demo
 ```bash 
 vim index.html
 ```
+**Output**
 
-18.
+![image](https://user-images.githubusercontent.com/91359308/169807444-35b6d132-fa80-4201-9d9e-8198c9cc882f.png)
+
+![image](https://user-images.githubusercontent.com/91359308/169807869-2744fa2d-ad71-44ed-a363-b6bf57af0f8d.png)
+
