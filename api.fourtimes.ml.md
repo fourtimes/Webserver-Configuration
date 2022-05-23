@@ -67,3 +67,7 @@ ip address    domain name
 ```bash
 curl api.fourtimes.ml
 ```
+
+**Output**
+
+![image](https://user-images.githubusercontent.com/91359308/169755707-447ed51c-227e-487d-81a1-1af680b599b5.png)

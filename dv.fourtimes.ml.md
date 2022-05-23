@@ -67,3 +67,10 @@ ip address    domain name
 ```bash
 curl dv.fourtimes.ml
 ```
+
+**Output**
+
+![image](https://user-images.githubusercontent.com/91359308/169755888-4470bed5-a607-4737-a254-d4e1b2560cd1.png)
+
+![image](https://user-images.githubusercontent.com/91359308/169755969-718e03e0-634f-4e8b-8e8b-78a40618ec50.png)
+
