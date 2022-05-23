@@ -3,80 +3,110 @@
 1. Download the ssl certificate and Extract that.
 2. go to the exact path and open in terminal.
 3. list the file
+
 ```bash
 ls
 ```
 
 4. Merge the certificate
+
 ```bash
 cat certificate.crt ca_bundle.crt >> certificate.crt
 ```
 
+5. To store the value in nginx
+
 ```bash
-vi /etc/nginx/sites-available/api.fourtimes.ml
+mkdir /etc/nginx/ssl-certificate
+vim /etc/nginx/ssl-certificate/certificate.crt
+vim /etc/nginx/ssl-certificate/private.key
+```
+
+6. configure the https,http domains and redirect conditions
+
+```bash
+vi /etc/nginx/sites-available/fourtimes.ml
 
 add this content:
 -----------------
 server {
     listen       80;
-    server_name  api.fourtimes.ml;
-    access_log /var/log/nginx/api.fourtimes.ml.access.log;
-    error_log  /var/log/nginx/api.fourtimes.ml.error.log;
+    server_name  fourtimes.ml www.fourtimes.ml;
+    return 301 https://$host$request_uri;
 
     location / {
-        root   /var/www/api.fourtimes.ml;
+        root   /var/www/fourtimes.ml;
         index  index.html index.htm;
+    }
+}
+
+server {
+    listen                443 ssl;
+    ssl                  on;
+    ssl_certificate      /etc/nginx/ssl-certificate/certificate.crt;
+    ssl_certificate_key  /etc/nginx/ssl-certificate/private.key;
+    server_name  fourtimes.ml;
+    access_log   /var/log/nginx/fourtimes.ml.access.log;
+    error_log    /var/log/nginx/fourtimes.ml.error.log;
+
+    location     / {
+        root         /var/www/fourtimes.ml;
+        index        index.html index.htm;
     }
 }
 ```
 
-**create directory file**
+7. Create directory file
 
 ```bash
-mkdir /var/www/api.fourtimes.ml
+mkdir /var/www/fourtimes.ml
 ```
 
-**change the directory**
+8. Change the directory
 
 ```bash
 cd /etc/nginx/sites-enabled
 ```
-**copy the file sites-enabled from site-available**
+
+9. copy the file sites-enabled from site-available
+
 ```bash
-ln -s /etc/nginx/sites-available/api.fourtimes.ml ./
+ln -s /etc/nginx/sites-available/fourtimes.ml ./
 ```
 
-**restart the server**
+
+10. restart the server
 
 ```bash
 systemctl restart nginx
 ```
-**status of the server**
+
+
+11. status of the server
 ```bash
 systemctl status nginx
 ```
-**Create index.html file and put the information:**
+
+12. Create index.html file and put the information:
+
+
 ```bash
-vim /var/www/api.fourtimes.ml/index.html
+vim /var/www/fourtimes.ml/index.html
 
 add this content:
 -----------------
 <html>
 <body>
 <div style="width: 100%; font-size: 40px; font-weight: bold; text-apiign: center;">
-welcome to the api.fourtimes.ml domain
+welcome to the fourtimes.ml domain
 </div>
 </body>
 </html>
 ```
-**Enter into the ip and domain name in /etc/hosts**
-```bash
-vim /etc/hosts
 
-ip address    domain name
-192.168.94.83 api.fourtimes.ml
-```
-**To run inside the terminapi**
+
+13. To run inside the terminapi
+
 ```bash
 curl api.fourtimes.ml
 ```
