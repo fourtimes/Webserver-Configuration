@@ -33,7 +33,7 @@ sudo vim /etc/nginx/ssl-certificate/private.key
 **6. configure the https,http domains and redirect conditions**
 
 ```bash
-vi /etc/nginx/sites-available/fourtimes.ml
+sudo vim /etc/nginx/sites-available/fourtimes.ml
 
 add this content:
 -----------------
@@ -80,6 +80,10 @@ cd /etc/nginx/sites-enabled
 
 ```bash
 ln -s /etc/nginx/sites-available/fourtimes.ml ./
+```
+**validation of nginx**
+```bash
+nginx -t
 ```
 **10. Restart the server**
 
