@@ -25,7 +25,7 @@ cat private.key
 **5. To store the value in nginx**
 
 ```bash
-mkdir /etc/nginx/ssl-certificate
+sudo mkdir /etc/nginx/ssl-certificate
 sudo vim /etc/nginx/ssl-certificate/certificate.crt
 sudo vim /etc/nginx/ssl-certificate/private.key
 ```
