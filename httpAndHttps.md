@@ -156,7 +156,8 @@ welcome to the demo path routing
 ```
 **Output**
 
-![image](https://user-images.githubusercontent.com/91359308/169807444-35b6d132-fa80-4201-9d9e-8198c9cc882f.png)
+![image](https://user-images.githubusercontent.com/91359308/170034624-fa3e608f-940f-4681-8e8f-6da8f25cacbd.png)
 
-![image](https://user-images.githubusercontent.com/91359308/169808713-4dc0d8d5-9c53-44a3-8602-9f942ecef8fa.png)
+![image](https://user-images.githubusercontent.com/91359308/170034793-538a66a8-aa95-4e4b-a4fd-8def1522fa8b.png)
+
 
