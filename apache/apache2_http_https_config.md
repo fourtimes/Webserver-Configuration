@@ -70,8 +70,7 @@ sudo chmod -R 755 /var/www/dodo-found.tk
 Then create html file for website index page
 
 ```bash
-
-echo "dodo-found.tk domain" | sudo tee  /var/www/dodo-found.tkindex.html
+sudo vim /var/www/dodo-found.tk/index.html
 
 ```
 
