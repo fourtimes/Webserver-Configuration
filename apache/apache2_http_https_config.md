@@ -22,7 +22,7 @@ sudo apt install apache2 -y
 
 **_apache2 installtion verification_**
 
-Use this command to check the apache2 packages after they've been installed.
+Use this command to check the **apache2 packages** after they've been installed.
 
 **_service handling process_**
 
@@ -35,7 +35,7 @@ sudo systemctl status apache2
 
 ```
 
-**_apache2 listen ports_**
+**To check _apache2 listen ports_**
 
 ```bash
 
@@ -51,7 +51,7 @@ We can utilise the domain `dodo-found.tk` in this part.
 |---|---|
 | /etc/apache2 | configuration files |
 | /var/log/apache2 | logs files |
-|/var/www/dodo-found.tk|Document Root |
+|/var/www/dodo-found.tk/index.html|Document Root |
 |80|HTTP|
 |443|HTTPs|
 
@@ -107,27 +107,23 @@ sudo vim /etc/apache2/sites-available/dodo-found.tk.conf
 use this conf file
 
 ```bash
-
 <VirtualHost *:80>
-    DocumentRoot /var/www/fourtimes.ml
-    ServerName www.fourtimes.ml
-    ServerAdmin webmaster@fourtimes.ml
-    ErrorLog /var/log/apache2/fourtimes.ml.error.log
-    CustomLog /var/log/apache2/fourtimes.ml.access.log combined
-</VirtualHost>
-
-                    [or]
-
-<VirtualHost *:80>
-
         ServerAdmin webmaster@dodo-found.tk
         Servername dodo-found.tk
         DocumentRoot /var/www/dodo-found.tk
+        
+        # Redirect http to https
+        RewriteEngine On
+        RewriteCond %{HTTPS} off
+        RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
         ErrorLog ${APACHE_LOG_DIR}/dodo-found.tk.error.log
         CustomLog ${APACHE_LOG_DIR}/dodo-found.tk.access.log combined
-        
+
 </VirtualHost>
+
+
+  
 
 ```
 
@@ -218,7 +214,10 @@ sudo systemctl reload apache2
 
 ```
 
-Using your web browser, examine the output result
+Using your web browser, examine the **output** result
+
+![image](https://user-images.githubusercontent.com/91359308/170310579-8f04cc76-0072-4381-a222-f49e1a0ae5dc.png)
+
 
 
 
