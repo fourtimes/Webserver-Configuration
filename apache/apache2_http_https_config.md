@@ -71,7 +71,7 @@ Then create html file for website index page
 
 ```bash
 
-echo "dodo-found.tk domain" | sudo tee  /var/www/html/index.html
+echo "dodo-found.tk domain" | sudo tee  /var/www/dodo-found.tkindex.html
 
 ```
 
