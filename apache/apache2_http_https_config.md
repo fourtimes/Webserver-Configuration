@@ -108,6 +108,17 @@ sudo vim /etc/apache2/sites-available/dodo-found.tk.conf
 use this conf file
 
 ```bash
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/fourtimes.ml
+    ServerName www.fourtimes.ml
+    ServerAdmin webmaster@fourtimes.ml
+    ErrorLog /var/log/apache2/fourtimes.ml.error.log
+    CustomLog /var/log/apache2/fourtimes.ml.access.log combined
+</VirtualHost>
+
+                    [or]
+
 <VirtualHost *:80>
 
         ServerAdmin webmaster@dodo-found.tk
