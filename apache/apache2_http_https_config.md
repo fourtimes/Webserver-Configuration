@@ -11,6 +11,19 @@ Apache is the most commonly used Web server on Linux systems. Web servers are us
 |---|---|
 |Ubuntu| 192.168.0.10|
 
+
+**_apache file structure details_**
+
+We can utilise the domain `dodo-found.tk` in this part.
+
+|LOCATION| PURPOSE |
+|---|---|
+| /etc/apache2 | configuration files |
+| /var/log/apache2 | logs files |
+|/var/www/dodo-found.tk/index.html|Document Root |
+|80|HTTP|
+|443|HTTPs|
+
 **_apache2 Installation_**
 
 If the package cannot be found, run the commands below to install apache2.
@@ -43,17 +56,6 @@ sudo ss -tulpn
 
 ```
 
-**_apache file structure details_**
-
-We can utilise the domain `dodo-found.tk` in this part.
-
-|LOCATION| PURPOSE |
-|---|---|
-| /etc/apache2 | configuration files |
-| /var/log/apache2 | logs files |
-|/var/www/dodo-found.tk/index.html|Document Root |
-|80|HTTP|
-|443|HTTPs|
 
 
 **HTTP vhost Configuration**
@@ -219,5 +221,14 @@ Using your web browser, examine the **output** result
 ![image](https://user-images.githubusercontent.com/91359308/170310579-8f04cc76-0072-4381-a222-f49e1a0ae5dc.png)
 
 
+**_Uninstall the apache2 package_**
+
+If we need to unistall the apache2 packages, use this command
+```bash
+sudo service apache2 stop
+sudo apt purge apache2 apache2-utils apache2.2-bin apache2-common
+sudo apt autoremove
+sudo rm -rf /etc/apache2  
+```
 
 
