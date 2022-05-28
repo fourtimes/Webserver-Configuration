@@ -230,5 +230,8 @@ sudo apt purge apache2 apache2-utils apache2.2-bin apache2-common
 sudo apt autoremove
 sudo rm -rf /etc/apache2  
 ```
-
+```bash
+sudo apt-get remove --purge apache2 apache2-data apache2-utils
+sudo apt-get install apache2
+```
 
