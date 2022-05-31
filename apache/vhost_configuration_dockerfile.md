@@ -65,7 +65,7 @@ sudo vim apache2_load_balancer/index.html
 
 **_fourtimes.conf file_**
 
-_To create an fourtimes config file in your apache2 directory_
+_To create an fourtimes config file in your `apache2_load_balancer` directory_
 
 ```bash
 vim apache2_load_balancer/fourtimes.conf
@@ -73,7 +73,6 @@ vim apache2_load_balancer/fourtimes.conf
 
 ```bash
 <VirtualHost *:80>
-
         ServerAdmin webmaster@fourtimes.tk
         Servername fourtimes.tk
         DocumentRoot /var/www/fourtimes
