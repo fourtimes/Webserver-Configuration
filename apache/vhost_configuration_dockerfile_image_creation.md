@@ -24,7 +24,7 @@ cd apache2_load_balancer
 _To create an index file in your `apache2_load_balancer` directory_
 
 ```bash
-sudo vim apache2_load_balancer/index.html
+sudo vim index.html
 ```
 
 ```bash
@@ -45,7 +45,7 @@ sudo vim apache2_load_balancer/index.html
 _To create an fourtimes config file in your `apache2_load_balancer` directory_
 
 ```bash
-vim apache2_load_balancer/fourtimes.conf
+sudo vim fourtimes.conf
 ```
 
 ```bash
