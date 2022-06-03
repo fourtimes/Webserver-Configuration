@@ -12,35 +12,12 @@
 
 #### We build a custom image for apache2 without SSL configuration in this section.
 
-**_Apache custom image build_**
 
 ```bash
 sudo mkdir -p apache2_load_balancer
 cd apache2_load_balancer
-sudo vim Dockerfile
+
 ```
-
-```bash
-# Basic configuration is presented below; if you wish to adjust any custom levels, do so according to your needs.
----------------------------------------------------------------------------
-FROM ubuntu:latest
-RUN apt update && apt install apache2 -y
-
-#create the Dockument Root
-RUN mkdir -p /var/www/fourtimes
-RUN echo "Welcome to apache2 webserver" | tee /var/www/fourtimes/index.html
-RUN ln -sf /dev/stdout /var/log/apache2/fourtimes.access.log \
-        && ln -sf /dev/stderr /var/log/apache2/fourtimes.error.log
-
-#Apache config
-COPY fourtimes.conf /etc/apache2/sites-available/fourtimes.conf
-RUN rm -f /etc/apache2/sites-available/000-default.conf
-RUN a2ensite fourtimes.conf
-
-CMD ["apachectl","-D","FOREGROUND"]
-```
-
----
 
 **index.html file**
 
@@ -84,6 +61,31 @@ vim apache2_load_balancer/fourtimes.conf
 
 ---
 
+**_Apache custom image build_**
+```bash
+sudo vim Dockerfile
+```
+```bash
+# Basic configuration is presented below; if you wish to adjust any custom levels, do so according to your needs.
+---------------------------------------------------------------------------
+FROM ubuntu:latest
+RUN apt update && apt install apache2 -y
+
+#create the Dockument Root
+RUN mkdir -p /var/www/fourtimes
+RUN echo "Welcome to apache2 webserver" | tee /var/www/fourtimes/index.html
+RUN ln -sf /dev/stdout /var/log/apache2/fourtimes.access.log \
+        && ln -sf /dev/stderr /var/log/apache2/fourtimes.error.log
+
+#Apache config
+COPY fourtimes.conf /etc/apache2/sites-available/fourtimes.conf
+RUN rm -f /etc/apache2/sites-available/000-default.conf
+RUN a2ensite fourtimes.conf
+
+CMD ["apachectl","-D","FOREGROUND"]
+```
+---
+
 **_Build the apache custom image_**
 
 ```bash
@@ -116,7 +118,6 @@ We build a custom image for apache2 with SSL configuration in this section.Use z
 ```bash
 sudo mkdir -p apache2_load_balancer
 cd apache2_load_balancer
-sudo vim Dockerfile
 ```
 
 Basic configuration is presented below; if you wish to adjust any custom levels, do so according to your needs.
@@ -125,33 +126,6 @@ Use `https://zerossl.com` to create an SSL certificate for your domain.
 
 To see this page, upload your SSL certificate to your config file —> https://help.zerossl.com/hc/en-us/sections/360012132973-Installation
 
-```bash
-FROM ubuntu:latest
-RUN apt update && apt install apache2 -y
-
-#create the Dockument Root
-RUN mkdir -p /var/www/fourtimes
-RUN echo "It's works" | tee /var/www/fourtimes/index.html
-
-#ssl conf
-RUN a2enmod ssl
-COPY ca_bundle.crt /etc/ssl/
-COPY certificate.crt /etc/ssl/
-RUN mkdir -p /etc/ssl/privates
-COPY private.key /etc/ssl/privates/
-
-RUN ln -sf /dev/stdout /var/log/apache2/fourtimes.access.log \
-        && ln -sf /dev/stderr /var/log/apache2/fourtimes.error.log
-
-#Apache config
-COPY fourtimes.conf /etc/apache2/sites-available/fourtimes.conf
-RUN rm -f /etc/apache2/sites-available/000-default.conf
-RUN a2ensite fourtimes.conf
-
-CMD ["apachectl","-D","FOREGROUND"]
-```
-
----
 
 **_index.html file_**
 
@@ -173,7 +147,6 @@ sudo vim apache2/index.html
 ```
 
 ---
-
 **_fourtimes.conf file_**
 
 to create the Config file on your apache2 folder
@@ -209,6 +182,38 @@ server {
         index        index.html index.htm;
     }
 }
+```
+---
+
+**Build the docker image**
+
+```bash
+sudo vim Dockerfile
+```
+```bash
+FROM ubuntu:latest
+RUN apt update && apt install apache2 -y
+
+#create the Dockument Root
+RUN mkdir -p /var/www/fourtimes
+RUN echo "It's works" | tee /var/www/fourtimes/index.html
+
+#ssl conf
+RUN a2enmod ssl
+COPY ca_bundle.crt /etc/ssl/
+COPY certificate.crt /etc/ssl/
+RUN mkdir -p /etc/ssl/privates
+COPY private.key /etc/ssl/privates/
+
+RUN ln -sf /dev/stdout /var/log/apache2/fourtimes.access.log \
+        && ln -sf /dev/stderr /var/log/apache2/fourtimes.error.log
+
+#Apache config
+COPY fourtimes.conf /etc/apache2/sites-available/fourtimes.conf
+RUN rm -f /etc/apache2/sites-available/000-default.conf
+RUN a2ensite fourtimes.conf
+
+CMD ["apachectl","-D","FOREGROUND"]
 ```
 
 **_Build the apache custom image_**
