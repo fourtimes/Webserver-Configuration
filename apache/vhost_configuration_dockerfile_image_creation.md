@@ -132,7 +132,7 @@ To see this page, upload your SSL certificate to your config file —> https://h
 to create the index file on your nginx folder
 
 ```bash
-sudo vim apache2/index.html
+sudo vim apache2_load_balancer/index.html
 ```
 
 ```bash
@@ -152,7 +152,7 @@ sudo vim apache2/index.html
 to create the Config file on your apache2 folder
 
 ```bash
-vim apache2/fourtimes.conf
+vim apache2_load_balancer/fourtimes.conf
 ```
 
 ```bash
