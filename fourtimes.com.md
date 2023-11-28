@@ -1,4 +1,4 @@
-### Configure nginx
+### webserver Configuration for nginx
 ```bash
 vi /etc/nginx/sites-available/fourtimes.com
 
