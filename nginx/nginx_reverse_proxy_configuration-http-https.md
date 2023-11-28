@@ -1,4 +1,4 @@
-### nginx-reverse-proxy-configuration-with http https.md
+### nginx-reverse-proxy-configuration-with-http-https.md
 
 _Refer the below nginx reverse proxy docs_
 
