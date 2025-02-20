@@ -1,4 +1,4 @@
-### Configure nginx
+## Configure nginx
 
 1. Download the ssl certificate and Extract that.
 2. go to the exact path and open in terminal.
