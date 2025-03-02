@@ -64,7 +64,8 @@ vim /etc/hosts
 ip address    domain name
 192.168.94.83 fourtimes.com
 
-# if we use ec2 instance server, we put a entry in localhost(our laptop)
+# If we are using ec2 instance server, we will put an entry of ec2 public IP on localhost (our laptop).
+vim /etc/hosts
 (public-ip) fourtimes.com
 ```
 **To run inside the terminal**
