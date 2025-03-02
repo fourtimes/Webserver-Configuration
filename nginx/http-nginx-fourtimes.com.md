@@ -1,4 +1,4 @@
-### webserver Configuration for nginx
+## Webserver Configuration for nginx
 First, Change for Root User
 ```bash
 vi /etc/nginx/sites-available/fourtimes.com
