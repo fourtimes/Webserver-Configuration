@@ -61,6 +61,7 @@ welcome to the fourtimes.com domain
 ```bash
 vim /etc/hosts
 
+# localhost entry
 ip address    domain name
 192.168.94.83 fourtimes.com
 
